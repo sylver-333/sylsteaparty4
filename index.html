@@ -1,46 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="style.css">
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<body>
+<title>Syl’s Tea Party</title>
 
-<header>
-<img src="https://via.placeholder.com/150x150.png?text=ST" class="logo">
-<h1>Syl’s Tea Party</h1>
-</header>
+<style>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="menu.html">Menu</a>
-<a href="about.html">About</a>
-<a href="reserve.html">Reserve</a>
-<a href="cart.html">Cart</a>
-</nav>
+body{
+font-family: Georgia, serif;
+margin:0;
+background:#fff7f8;
+color:#333;
+scroll-behavior:smooth;
+}
 
-<div class="hero" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600');">
-<h2>Luxury Tea Experience</h2>
-<p>Elegant moments. Beautiful flavors.</p>
-</div>
+/* HEADER */
+header{
+background:#e8b7c1;
+padding:25px;
+text-align:center;
+color:white;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
 
-<div class="container">
-<h2>Welcome</h2>
-<p style="text-align:center;">A boutique tea experience designed for aesthetic and relaxation.</p>
-</div>
-
-<footer>© 2026 Syl’s Tea Party</footer>
-
-</body>
-</html>border-radius:50%;
+.logo{
+width:90px;
+display:block;
+margin:auto;
+margin-bottom:10px;
+border-radius:50%;
 background:white;
-padding:8px;
+padding:6px;
 }
 
 header h1{
 margin:0;
-font-size:32px;
-letter-spacing:2px;
+font-size:38px;
+letter-spacing:1px;
 }
 
 /* NAV */
@@ -48,6 +46,7 @@ nav{
 background:#d89aa7;
 display:flex;
 justify-content:center;
+flex-wrap:wrap;
 }
 
 nav a{
@@ -64,87 +63,68 @@ background:#c87e8d;
 
 /* HERO */
 .hero{
-height:420px;
 background:
-linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
 url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop");
 background-size:cover;
 background-position:center;
+height:380px;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 color:white;
-text-align:center;
+font-size:38px;
+text-shadow:2px 2px 8px black;
 }
 
-.hero h2{
-font-size:42px;
-margin-bottom:10px;
-}
-
-.hero button{
-margin-top:15px;
-}
-
-/* SECTIONS */
-.section{
-padding:70px 20px;
-max-width:1100px;
+/* CONTAINER */
+.container{
+max-width:1000px;
 margin:auto;
+padding:50px 20px;
 }
 
+/* TITLES */
 .section-title{
 text-align:center;
-font-size:34px;
-margin-bottom:40px;
+margin-bottom:30px;
+font-size:32px;
 }
 
 /* GRID */
-.grid{
+.menu-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
 }
 
-/* CARDS */
-.card{
+/* MENU ITEMS */
+.menu-item{
 background:white;
 padding:20px;
 border-radius:12px;
 box-shadow:0 5px 15px rgba(0,0,0,0.1);
-text-align:center;
 transition:0.3s;
+text-align:center;
 }
 
-.card:hover{
-transform:translateY(-8px);
+.menu-item:hover{
+transform:translateY(-6px);
 }
 
-.card img{
+.menu-item img{
 width:100%;
 border-radius:10px;
 margin-bottom:10px;
 }
 
-/* FULL IMAGE SECTION */
-.split{
-display:flex;
-flex-wrap:wrap;
-}
-
-.split img{
-width:50%;
-height:350px;
-object-fit:cover;
-}
-
-.split .text{
-width:50%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding:40px;
+/* IMAGE BREAK (NEW) */
+.image-break{
+height:250px;
+background-size:cover;
+background-position:center;
+border-radius:12px;
+margin:40px 0;
 }
 
 /* BUTTON */
@@ -166,16 +146,9 @@ background:#d89aa7;
 footer{
 background:#e8b7c1;
 text-align:center;
-padding:25px;
+padding:20px;
 color:white;
 margin-top:40px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.split img, .split .text{
-width:100%;
-}
 }
 
 </style>
@@ -184,114 +157,121 @@ width:100%;
 <body>
 
 <header>
-<img src="https://via.placeholder.com/100x100.png?text=ST" class="logo">
+<!-- CLEAN FAKE LOGO -->
+<img src="https://via.placeholder.com/200x200.png?text=ST" class="logo">
+
 <h1>Syl’s Tea Party</h1>
+<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
 </header>
 
 <nav>
 <a href="#home">Home</a>
-<a href="#menu">Menu</a>
+<a href="#menu">Tea Menu</a>
 <a href="#experience">Experience</a>
 <a href="#contact">Contact</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="home">
-<h2>Luxury Tea Experience</h2>
-<p>Elegant moments. Beautiful flavors. Unforgettable vibes.</p>
-<button>Reserve Now</button>
-</section>
-
-<!-- FEATURE SPLIT (Starbucks style) -->
-<section class="split">
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600">
-<div class="text">
-<h2>Crafted for Aesthetic Moments</h2>
-<p>Every tea and dessert is designed to be as beautiful as it is delicious.</p>
-<button>Explore Menu</button>
+<div class="hero" id="home">
+Welcome to Syl’s Tea Party
 </div>
-</section>
 
-<!-- MENU -->
-<section class="section" id="menu">
+<div class="container" id="menu">
 
 <h2 class="section-title">Signature Teas</h2>
 
-<div class="grid">
+<div class="menu-grid">
 
-<div class="card">
+<div class="menu-item">
 <img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
 <h3>Royal Healing Tea</h3>
-<p>Soursop, Ginger & Hibiscus</p>
+<p>Soursop, Ginger, Lemon & Hibiscus</p>
 <strong>$8</strong>
-<button>Add to Cart</button>
 </div>
 
-<div class="card">
+<div class="menu-item">
 <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
 <h3>Lavender Earl Grey</h3>
 <p>Floral & calming blend</p>
 <strong>$7</strong>
-<button>Add to Cart</button>
 </div>
 
-<div class="card">
+<div class="menu-item">
 <img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800">
 <h3>Matcha Garden Latte</h3>
 <p>Ceremonial matcha</p>
 <strong>$9</strong>
-<button>Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=800">
+<h3>Peach Blossom Oolong</h3>
+<p>Sweet peach notes</p>
+<strong>$8</strong>
 </div>
 
 </div>
 
-</section>
+<!-- IMAGE BREAK -->
+<div class="image-break" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600');"></div>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
+<h2 class="section-title">Tea Party Treats</h2>
 
-<h2 class="section-title">The Experience</h2>
+<div class="menu-grid">
 
-<div class="grid">
-
-<div class="card">
-<h3>Luxury Atmosphere</h3>
-<p>Perfect for photos & relaxing moments</p>
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
+<h3>Mini Strawberry Cakes</h3>
+<p>Light sponge cake</p>
+<strong>$6</strong>
 </div>
 
-<div class="card">
-<h3>Private Events</h3>
-<p>Birthdays, dates & gatherings</p>
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800">
+<h3>French Macarons</h3>
+<p>Assorted flavors</p>
+<strong>$5</strong>
 </div>
 
-<div class="card">
-<h3>Social Aesthetic</h3>
-<p>Designed for Instagram & TikTok moments</p>
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800">
+<h3>Butter Scones</h3>
+<p>Served with jam</p>
+<strong>$5</strong>
 </div>
 
 </div>
 
-</section>
+</div>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
+<div class="container" id="experience">
+
+<h2 class="section-title">The Tea Party Experience</h2>
+
+<p style="text-align:center; max-width:700px; margin:auto;">
+Syl’s Tea Party is a boutique luxury experience inspired by elegant tea salons.
+Designed for aesthetic moments, celebrations, and unforgettable vibes.
+</p>
+
+</div>
+
+<div class="container" id="contact">
 
 <h2 class="section-title">Book a Tea Party</h2>
 
 <p style="text-align:center;">
 Email: bookings@sylsteaparty.com<br>
 Instagram: @sylsteaparty<br>
-New York City
+Location: New York City
 </p>
 
 <div style="text-align:center;">
 <button>Reserve a Table</button>
 </div>
 
-</section>
+</div>
 
 <footer>
-© 2026 Syl’s Tea Party
+<p>© 2026 Syl’s Tea Party</p>
 </footer>
 
 </body>
