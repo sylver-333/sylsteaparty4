@@ -3,224 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Syl’s Tea Party</title>
-
-<style>
-
-body{
-font-family: Georgia, serif;
-margin:0;
-background:#fff7f8;
-color:#333;
-}
-
-header{
-background:#e8b7c1;
-padding:30px;
-text-align:center;
-color:white;
-}
-
-header h1{
-margin:0;
-font-size:40px;
-}
-
-.logo{
-width:120px;
-margin-bottom:10px;
-display:block;
-margin-left:auto;
-margin-right:auto;
-}
-
-nav{
-background:#d89aa7;
-display:flex;
-justify-content:center;
-}
-
-nav a{
-padding:15px 20px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-}
-
-nav a:hover{
-background:#c87e8d;
-}
-
-.hero{
-background:url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085");
-background-size:cover;
-background-position:center;
-height:350px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:36px;
-text-shadow:2px 2px 5px black;
-}
-
-.container{
-max-width:1000px;
-margin:auto;
-padding:40px;
-}
-
-.section-title{
-text-align:center;
-margin-bottom:30px;
-font-size:30px;
-}
-
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.menu-item{
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
-}
-
-.menu-item h3{
-margin-top:0;
-}
-
-button{
-background:#e8b7c1;
-border:none;
-padding:12px 20px;
-border-radius:5px;
-font-weight:bold;
-cursor:pointer;
-}
-
-button:hover{
-background:#d89aa7;
-}
-
-footer{
-background:#e8b7c1;
-text-align:center;
-padding:20px;
-color:white;
-margin-top:40px;
-}
-
-</style>
+<title>Home - Syl’s Tea Party</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-<img src="ORIGINAL LOGO TRANSPARENT.PNG" alt="Syl’s Tea Party Logo" class="logo">
+<img src="ORIGINAL LOGO TRANSPARENT.PNG" class="logo">
 <h1>Syl’s Tea Party</h1>
 <p>Luxury Tea • Elegant Treats • Sweet Moments</p>
 </header>
 
 <nav>
-<a href="#home">Home</a>
-<a href="#menu">Tea Menu</a>
-<a href="#experience">Experience</a>
-<a href="#contact">Contact</a>
+<a href="index.html">Home</a>
+<a href="menu.html">Menu</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
 </nav>
 
-<div class="hero" id="home">
+<div class="hero" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600');">
 Welcome to Syl’s Tea Party
 </div>
 
-<div class="container" id="menu">
-
-<h2 class="section-title">Signature Teas</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<h3>Royal Healing Tea</h3>
-<p>Soursop leaf, Ginger, and Lemon tea with Hibiscus petals.</p>
-<strong>$8</strong>
-</div>
-
-<div class="menu-item">
-<h3>Lavender Earl Grey</h3>
-<p>Classic Earl Grey infused with lavender.</p>
-<strong>$7</strong>
-</div>
-
-<div class="menu-item">
-<h3>Matcha Garden Latte</h3>
-<p>Ceremonial matcha with steamed milk.</p>
-<strong>$9</strong>
-</div>
-
-<div class="menu-item">
-<h3>Peach Blossom Oolong</h3>
-<p>Light oolong tea with sweet peach notes.</p>
-<strong>$8</strong>
-</div>
-
-</div>
-
-<h2 class="section-title">Tea Party Treats</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<h3>Mini Strawberry Cakes</h3>
-<p>Light sponge cake with fresh strawberries.</p>
-<strong>$6</strong>
-</div>
-
-<div class="menu-item">
-<h3>French Macarons</h3>
-<p>Assorted elegant flavors.</p>
-<strong>$5</strong>
-</div>
-
-<div class="menu-item">
-<h3>Butter Scones</h3>
-<p>Served with jam and cream.</p>
-<strong>$5</strong>
-</div>
-
-</div>
-
-</div>
-
-<div class="container" id="experience">
-
-<h2 class="section-title">The Tea Party Experience</h2>
-
-<p>
-Syl’s Tea Party is a boutique tea experience inspired by luxury tea salons and
-fashion cafés. Guests enjoy elegant tea, beautiful desserts, and a cozy
-atmosphere perfect for photos, celebrations, and relaxing afternoons.
+<div class="container">
+<h2 class="section-title">Experience Luxury Tea</h2>
+<p style="text-align:center;">
+An elegant tea experience designed for beauty, relaxation, and unforgettable moments.
 </p>
-
-<p>
-Perfect for birthdays, small gatherings, and aesthetic tea moments.
-</p>
-
-</div>
-
-<div class="container" id="contact">
-
-<h2 class="section-title">Book a Tea Party</h2>
-
-<p>Email: bookings@sylsteaparty.com</p>
-<p>Instagram: @sylsteaparty</p>
-<p>Location: New York City</p>
-
-<button>Reserve a Table</button>
-
 </div>
 
 <footer>
