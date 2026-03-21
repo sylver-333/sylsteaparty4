@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Syl’s Tea Party</title>
 
 <style>
@@ -13,7 +12,6 @@ font-family: Georgia, serif;
 margin:0;
 background:#fff7f8;
 color:#333;
-scroll-behavior:smooth;
 }
 
 /* HEADER */
@@ -22,19 +20,255 @@ background:#e8b7c1;
 padding:25px;
 text-align:center;
 color:white;
-box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .logo{
-width:90px;
+width:80px;
 display:block;
 margin:auto;
 margin-bottom:10px;
 border-radius:50%;
 background:white;
-padding:6px;
+padding:5px;
 }
 
+header h1{
+margin:0;
+font-size:38px;
+}
+
+/* NAV */
+nav{
+background:#d89aa7;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+nav a{
+padding:15px 20px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+background:#c87e8d;
+}
+
+/* HERO */
+.hero{
+background:
+linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600");
+background-size:cover;
+background-position:center;
+height:350px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:36px;
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:30px;
+}
+
+/* GRID */
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+/* ITEM */
+.menu-item{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.menu-item img{
+width:100%;
+border-radius:8px;
+}
+
+/* CART */
+#cart-items div{
+background:white;
+margin:10px auto;
+padding:10px;
+max-width:300px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+button{
+background:#e8b7c1;
+border:none;
+padding:10px 15px;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#d89aa7;
+}
+
+/* FOOTER */
+footer{
+background:#e8b7c1;
+text-align:center;
+padding:20px;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="https://via.placeholder.com/150x150.png?text=ST" class="logo">
+<h1>Syl’s Tea Party</h1>
+<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Menu</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+<a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+Welcome to Syl’s Tea Party
+</div>
+
+<!-- MENU -->
+<div class="container" id="menu">
+
+<h2 class="section-title">Signature Teas</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
+<h3>Royal Healing Tea</h3>
+<p>$8</p>
+<button onclick="addToCart('Royal Healing Tea',8)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
+<h3>Lavender Earl Grey</h3>
+<p>$7</p>
+<button onclick="addToCart('Lavender Earl Grey',7)">Add to Cart</button>
+</div>
+
+</div>
+
+<h2 class="section-title">Tea Party Treats</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
+<h3>Mini Strawberry Cakes</h3>
+<p>$6</p>
+<button onclick="addToCart('Mini Strawberry Cakes',6)">Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="container" id="experience">
+<h2 class="section-title">The Tea Party Experience</h2>
+<p style="text-align:center;">
+Luxury tea, aesthetic vibes, and unforgettable moments.
+</p>
+</div>
+
+<!-- CONTACT -->
+<div class="container" id="contact">
+<h2 class="section-title">Book a Tea Party</h2>
+<p style="text-align:center;">
+Email: bookings@sylsteaparty.com<br>
+Instagram: @sylsteaparty<br>
+Location: New York City
+</p>
+</div>
+
+<!-- CART -->
+<div class="container" id="cart">
+<h2 class="section-title">Your Cart</h2>
+
+<div id="cart-items"></div>
+<h3 id="cart-total" style="text-align:center;"></h3>
+
+<div style="text-align:center;">
+<button onclick="checkout()">Checkout</button>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Syl’s Tea Party</p>
+</footer>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCart(){
+let cartItems = document.getElementById("cart-items");
+let total = 0;
+
+cartItems.innerHTML = "";
+
+cart.forEach(item=>{
+let div = document.createElement("div");
+div.innerHTML = item.name + " - $" + item.price;
+cartItems.appendChild(div);
+total += item.price;
+});
+
+document.getElementById("cart-total").innerText = "Total: $" + total;
+document.getElementById("cart-count").innerText = cart.length;
+}
+
+function addToCart(name, price){
+cart.push({name, price});
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+}
+
+function checkout(){
+alert("Next step: connect Stripe");
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
 header h1{
 margin:0;
 font-size:38px;
