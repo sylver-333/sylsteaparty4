@@ -24,25 +24,18 @@ color:white;
 
 .logo{
 width:80px;
-display:block;
 margin:auto;
+display:block;
 margin-bottom:10px;
 border-radius:50%;
 background:white;
 padding:5px;
 }
 
-header h1{
-margin:0;
-font-size:38px;
-}
-
-/* NAV */
 nav{
 background:#d89aa7;
 display:flex;
 justify-content:center;
-flex-wrap:wrap;
 }
 
 nav a{
@@ -78,24 +71,17 @@ margin:auto;
 padding:40px;
 }
 
-.section-title{
-text-align:center;
-margin-bottom:30px;
-}
-
-/* GRID */
 .menu-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
-/* ITEM */
 .menu-item{
 background:white;
 padding:20px;
 border-radius:10px;
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
 text-align:center;
 }
 
@@ -104,14 +90,32 @@ width:100%;
 border-radius:8px;
 }
 
-/* CART */
-#cart-items div{
+/* CART PANEL */
+.cart-box{
 background:white;
-margin:10px auto;
-padding:10px;
-max-width:300px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
+border-radius:12px;
+padding:20px;
+max-width:500px;
+margin:40px auto;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:15px;
+}
+
+.cart-controls button{
+padding:5px 10px;
+margin:0 3px;
+}
+
+.total{
+text-align:center;
+font-size:20px;
+margin-top:20px;
 }
 
 /* BUTTON */
@@ -127,7 +131,6 @@ button:hover{
 background:#d89aa7;
 }
 
-/* FOOTER */
 footer{
 background:#e8b7c1;
 text-align:center;
@@ -143,26 +146,20 @@ color:white;
 <header>
 <img src="https://via.placeholder.com/150x150.png?text=ST" class="logo">
 <h1>Syl’s Tea Party</h1>
-<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
 </header>
 
 <nav>
-<a href="#home">Home</a>
 <a href="#menu">Menu</a>
-<a href="#experience">Experience</a>
-<a href="#contact">Contact</a>
 <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero" id="home">
-Welcome to Syl’s Tea Party
+<div class="hero">
+Luxury Tea Experience
 </div>
 
-<!-- MENU -->
 <div class="container" id="menu">
 
-<h2 class="section-title">Signature Teas</h2>
+<h2>Menu</h2>
 
 <div class="menu-grid">
 
@@ -170,635 +167,104 @@ Welcome to Syl’s Tea Party
 <img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
 <h3>Royal Healing Tea</h3>
 <p>$8</p>
-<button onclick="addToCart('Royal Healing Tea',8)">Add to Cart</button>
+<button onclick="addToCart('Royal Healing Tea',8)">Add</button>
 </div>
 
 <div class="menu-item">
 <img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
 <h3>Lavender Earl Grey</h3>
 <p>$7</p>
-<button onclick="addToCart('Lavender Earl Grey',7)">Add to Cart</button>
+<button onclick="addToCart('Lavender Earl Grey',7)">Add</button>
 </div>
 
 </div>
 
-<h2 class="section-title">Tea Party Treats</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
-<h3>Mini Strawberry Cakes</h3>
-<p>$6</p>
-<button onclick="addToCart('Mini Strawberry Cakes',6)">Add to Cart</button>
-</div>
-
-</div>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="container" id="experience">
-<h2 class="section-title">The Tea Party Experience</h2>
-<p style="text-align:center;">
-Luxury tea, aesthetic vibes, and unforgettable moments.
-</p>
-</div>
-
-<!-- CONTACT -->
-<div class="container" id="contact">
-<h2 class="section-title">Book a Tea Party</h2>
-<p style="text-align:center;">
-Email: bookings@sylsteaparty.com<br>
-Instagram: @sylsteaparty<br>
-Location: New York City
-</p>
 </div>
 
 <!-- CART -->
 <div class="container" id="cart">
-<h2 class="section-title">Your Cart</h2>
 
-<div id="cart-items"></div>
-<h3 id="cart-total" style="text-align:center;"></h3>
+<h2>Your Cart</h2>
 
-<div style="text-align:center;">
-<button onclick="checkout()">Checkout</button>
-</div>
+<div class="cart-box" id="cart-items"></div>
+
+<div class="total" id="total"></div>
 
 </div>
 
-<footer>
-<p>© 2026 Syl’s Tea Party</p>
-</footer>
+<footer>© 2026 Syl’s Tea Party</footer>
 
 <script>
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-function updateCart(){
-let cartItems = document.getElementById("cart-items");
-let total = 0;
-
-cartItems.innerHTML = "";
-
-cart.forEach(item=>{
-let div = document.createElement("div");
-div.innerHTML = item.name + " - $" + item.price;
-cartItems.appendChild(div);
-total += item.price;
-});
-
-document.getElementById("cart-total").innerText = "Total: $" + total;
-document.getElementById("cart-count").innerText = cart.length;
+function saveCart(){
+localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 function addToCart(name, price){
-cart.push({name, price});
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCart();
+let item = cart.find(i => i.name === name);
+
+if(item){
+item.qty++;
+}else{
+cart.push({name, price, qty:1});
 }
 
-function checkout(){
-alert("Next step: connect Stripe");
+saveCart();
+renderCart();
 }
 
-updateCart();
-
-</script>
-
-</body>
-</html>
-header h1{
-margin:0;
-font-size:38px;
-letter-spacing:1px;
+function removeItem(index){
+cart.splice(index,1);
+saveCart();
+renderCart();
 }
 
-/* NAV */
-nav{
-background:#d89aa7;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
+function changeQty(index, change){
+cart[index].qty += change;
+
+if(cart[index].qty <= 0){
+removeItem(index);
+}else{
+saveCart();
+renderCart();
+}
 }
 
-nav a{
-padding:15px 25px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-transition:0.3s;
-}
-
-nav a:hover{
-background:#c87e8d;
-}
-
-/* HERO */
-.hero{
-background:
-linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600");
-background-size:cover;
-background-position:center;
-height:380px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:38px;
-text-shadow:2px 2px 8px black;
-}
-
-/* CONTAINER */
-.container{
-max-width:1000px;
-margin:auto;
-padding:50px 20px;
-}
-
-/* TITLES */
-.section-title{
-text-align:center;
-margin-bottom:30px;
-font-size:32px;
-}
-
-/* GRID */
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-}
-
-/* MENU ITEMS */
-.menu-item{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-text-align:center;
-}
-
-.menu-item:hover{
-transform:translateY(-6px);
-}
-
-.menu-item img{
-width:100%;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-/* CART ITEMS */
-#cart-items div{
-background:white;
-padding:10px;
-margin:10px auto;
-max-width:300px;
-border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-text-align:center;
-}
-
-/* IMAGE BREAK */
-.image-break{
-height:250px;
-background-size:cover;
-background-position:center;
-border-radius:12px;
-margin:40px 0;
-}
-
-/* BUTTON */
-button{
-background:#e8b7c1;
-border:none;
-padding:12px 22px;
-border-radius:5px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#d89aa7;
-}
-
-/* FOOTER */
-footer{
-background:#e8b7c1;
-text-align:center;
-padding:20px;
-color:white;
-margin-top:40px;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-<img src="https://via.placeholder.com/200x200.png?text=ST" class="logo">
-<h1>Syl’s Tea Party</h1>
-<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
-</header>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#menu">Tea Menu</a>
-<a href="#experience">Experience</a>
-<a href="#contact">Contact</a>
-<a href="#cart">Cart (<span id="cart-count">0</span>)</a>
-</nav>
-
-<div class="hero" id="home">
-Welcome to Syl’s Tea Party
-</div>
-
-<div class="container" id="menu">
-
-<h2 class="section-title">Signature Teas</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
-<h3>Royal Healing Tea</h3>
-<p>Soursop, Ginger, Lemon & Hibiscus</p>
-<strong>$8</strong>
-<button onclick="addToCart('Royal Healing Tea', 8)">Add to Cart</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
-<h3>Lavender Earl Grey</h3>
-<p>Floral & calming blend</p>
-<strong>$7</strong>
-<button onclick="addToCart('Lavender Earl Grey', 7)">Add to Cart</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800">
-<h3>Matcha Garden Latte</h3>
-<p>Ceremonial matcha</p>
-<strong>$9</strong>
-<button onclick="addToCart('Matcha Garden Latte', 9)">Add to Cart</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=800">
-<h3>Peach Blossom Oolong</h3>
-<p>Sweet peach notes</p>
-<strong>$8</strong>
-<button onclick="addToCart('Peach Blossom Oolong', 8)">Add to Cart</button>
-</div>
-
-</div>
-
-<div class="image-break" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600');"></div>
-
-<h2 class="section-title">Tea Party Treats</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
-<h3>Mini Strawberry Cakes</h3>
-<strong>$6</strong>
-<button onclick="addToCart('Mini Strawberry Cakes', 6)">Add to Cart</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800">
-<h3>French Macarons</h3>
-<strong>$5</strong>
-<button onclick="addToCart('French Macarons', 5)">Add to Cart</button>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800">
-<h3>Butter Scones</h3>
-<strong>$5</strong>
-<button onclick="addToCart('Butter Scones', 5)">Add to Cart</button>
-</div>
-
-</div>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="container" id="experience">
-<h2 class="section-title">The Tea Party Experience</h2>
-<p style="text-align:center; max-width:700px; margin:auto;">
-Luxury tea, aesthetic vibes, and unforgettable moments.
-</p>
-</div>
-
-<!-- CONTACT -->
-<div class="container" id="contact">
-<h2 class="section-title">Book a Tea Party</h2>
-<p style="text-align:center;">
-Email: bookings@sylsteaparty.com<br>
-Instagram: @sylsteaparty<br>
-Location: New York City
-</p>
-</div>
-
-<!-- CART -->
-<div class="container" id="cart">
-<h2 class="section-title">Your Cart</h2>
-<div id="cart-items"></div>
-<h3 id="cart-total" style="text-align:center;"></h3>
-
-<div style="text-align:center;">
-<button onclick="checkout()">Checkout</button>
-</div>
-</div>
-
-<footer>
-<p>© 2026 Syl’s Tea Party</p>
-</footer>
-
-<script>
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function updateCart(){
-let cartItems = document.getElementById("cart-items");
+function renderCart(){
+let container = document.getElementById("cart-items");
 let total = 0;
 
-cartItems.innerHTML = "";
+container.innerHTML = "";
 
-cart.forEach(item=>{
+cart.forEach((item, index)=>{
 let div = document.createElement("div");
-div.innerHTML = item.name + " - $" + item.price;
-cartItems.appendChild(div);
-total += item.price;
+div.className = "cart-item";
+
+div.innerHTML = `
+<span>${item.name} ($${item.price})</span>
+
+<div class="cart-controls">
+<button onclick="changeQty(${index}, -1)">-</button>
+<span>${item.qty}</span>
+<button onclick="changeQty(${index}, 1)">+</button>
+<button onclick="removeItem(${index})">x</button>
+</div>
+`;
+
+container.appendChild(div);
+
+total += item.price * item.qty;
 });
 
-document.getElementById("cart-total").innerText = "Total: $" + total;
+document.getElementById("total").innerText = "Total: $" + total;
 document.getElementById("cart-count").innerText = cart.length;
 }
 
-function addToCart(name, price){
-cart.push({name, price});
-localStorage.setItem("cart", JSON.stringify(cart));
-updateCart();
-alert(name + " added to cart");
-}
-
-function checkout(){
-alert("Next step: connect Stripe here");
-}
-
-updateCart();
+renderCart();
 
 </script>
-
-</body>
-</html>
-header h1{
-margin:0;
-font-size:38px;
-letter-spacing:1px;
-}
-
-/* NAV */
-nav{
-background:#d89aa7;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-}
-
-nav a{
-padding:15px 25px;
-text-decoration:none;
-color:white;
-font-weight:bold;
-transition:0.3s;
-}
-
-nav a:hover{
-background:#c87e8d;
-}
-
-/* HERO */
-.hero{
-background:
-linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
-url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop");
-background-size:cover;
-background-position:center;
-height:380px;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:38px;
-text-shadow:2px 2px 8px black;
-}
-
-/* CONTAINER */
-.container{
-max-width:1000px;
-margin:auto;
-padding:50px 20px;
-}
-
-/* TITLES */
-.section-title{
-text-align:center;
-margin-bottom:30px;
-font-size:32px;
-}
-
-/* GRID */
-.menu-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-}
-
-/* MENU ITEMS */
-.menu-item{
-background:white;
-padding:20px;
-border-radius:12px;
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-transition:0.3s;
-text-align:center;
-}
-
-.menu-item:hover{
-transform:translateY(-6px);
-}
-
-.menu-item img{
-width:100%;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-/* IMAGE BREAK (NEW) */
-.image-break{
-height:250px;
-background-size:cover;
-background-position:center;
-border-radius:12px;
-margin:40px 0;
-}
-
-/* BUTTON */
-button{
-background:#e8b7c1;
-border:none;
-padding:12px 22px;
-border-radius:5px;
-font-weight:bold;
-cursor:pointer;
-transition:0.3s;
-}
-
-button:hover{
-background:#d89aa7;
-}
-
-/* FOOTER */
-footer{
-background:#e8b7c1;
-text-align:center;
-padding:20px;
-color:white;
-margin-top:40px;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-<!-- CLEAN FAKE LOGO -->
-<img src="https://via.placeholder.com/200x200.png?text=ST" class="logo">
-
-<h1>Syl’s Tea Party</h1>
-<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
-</header>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#menu">Tea Menu</a>
-<a href="#experience">Experience</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<div class="hero" id="home">
-Welcome to Syl’s Tea Party
-</div>
-
-<div class="container" id="menu">
-
-<h2 class="section-title">Signature Teas</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
-<h3>Royal Healing Tea</h3>
-<p>Soursop, Ginger, Lemon & Hibiscus</p>
-<strong>$8</strong>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
-<h3>Lavender Earl Grey</h3>
-<p>Floral & calming blend</p>
-<strong>$7</strong>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800">
-<h3>Matcha Garden Latte</h3>
-<p>Ceremonial matcha</p>
-<strong>$9</strong>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=800">
-<h3>Peach Blossom Oolong</h3>
-<p>Sweet peach notes</p>
-<strong>$8</strong>
-</div>
-
-</div>
-
-<!-- IMAGE BREAK -->
-<div class="image-break" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600');"></div>
-
-<h2 class="section-title">Tea Party Treats</h2>
-
-<div class="menu-grid">
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
-<h3>Mini Strawberry Cakes</h3>
-<p>Light sponge cake</p>
-<strong>$6</strong>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800">
-<h3>French Macarons</h3>
-<p>Assorted flavors</p>
-<strong>$5</strong>
-</div>
-
-<div class="menu-item">
-<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800">
-<h3>Butter Scones</h3>
-<p>Served with jam</p>
-<strong>$5</strong>
-</div>
-
-</div>
-
-</div>
-
-<div class="container" id="experience">
-
-<h2 class="section-title">The Tea Party Experience</h2>
-
-<p style="text-align:center; max-width:700px; margin:auto;">
-Syl’s Tea Party is a boutique luxury experience inspired by elegant tea salons.
-Designed for aesthetic moments, celebrations, and unforgettable vibes.
-</p>
-
-</div>
-
-<div class="container" id="contact">
-
-<h2 class="section-title">Book a Tea Party</h2>
-
-<p style="text-align:center;">
-Email: bookings@sylsteaparty.com<br>
-Instagram: @sylsteaparty<br>
-Location: New York City
-</p>
-
-<div style="text-align:center;">
-<button>Reserve a Table</button>
-</div>
-
-</div>
-
-<footer>
-<p>© 2026 Syl’s Tea Party</p>
-</footer>
 
 </body>
 </html>
