@@ -65,6 +65,298 @@ background:#c87e8d;
 .hero{
 background:
 linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600");
+background-size:cover;
+background-position:center;
+height:380px;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:38px;
+text-shadow:2px 2px 8px black;
+}
+
+/* CONTAINER */
+.container{
+max-width:1000px;
+margin:auto;
+padding:50px 20px;
+}
+
+/* TITLES */
+.section-title{
+text-align:center;
+margin-bottom:30px;
+font-size:32px;
+}
+
+/* GRID */
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+/* MENU ITEMS */
+.menu-item{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+transition:0.3s;
+text-align:center;
+}
+
+.menu-item:hover{
+transform:translateY(-6px);
+}
+
+.menu-item img{
+width:100%;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+/* CART ITEMS */
+#cart-items div{
+background:white;
+padding:10px;
+margin:10px auto;
+max-width:300px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+/* IMAGE BREAK */
+.image-break{
+height:250px;
+background-size:cover;
+background-position:center;
+border-radius:12px;
+margin:40px 0;
+}
+
+/* BUTTON */
+button{
+background:#e8b7c1;
+border:none;
+padding:12px 22px;
+border-radius:5px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#d89aa7;
+}
+
+/* FOOTER */
+footer{
+background:#e8b7c1;
+text-align:center;
+padding:20px;
+color:white;
+margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="https://via.placeholder.com/200x200.png?text=ST" class="logo">
+<h1>Syl’s Tea Party</h1>
+<p>Luxury Tea • Elegant Treats • Sweet Moments</p>
+</header>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#menu">Tea Menu</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+<a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+</nav>
+
+<div class="hero" id="home">
+Welcome to Syl’s Tea Party
+</div>
+
+<div class="container" id="menu">
+
+<h2 class="section-title">Signature Teas</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
+<h3>Royal Healing Tea</h3>
+<p>Soursop, Ginger, Lemon & Hibiscus</p>
+<strong>$8</strong>
+<button onclick="addToCart('Royal Healing Tea', 8)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
+<h3>Lavender Earl Grey</h3>
+<p>Floral & calming blend</p>
+<strong>$7</strong>
+<button onclick="addToCart('Lavender Earl Grey', 7)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?q=80&w=800">
+<h3>Matcha Garden Latte</h3>
+<p>Ceremonial matcha</p>
+<strong>$9</strong>
+<button onclick="addToCart('Matcha Garden Latte', 9)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=800">
+<h3>Peach Blossom Oolong</h3>
+<p>Sweet peach notes</p>
+<strong>$8</strong>
+<button onclick="addToCart('Peach Blossom Oolong', 8)">Add to Cart</button>
+</div>
+
+</div>
+
+<div class="image-break" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600');"></div>
+
+<h2 class="section-title">Tea Party Treats</h2>
+
+<div class="menu-grid">
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1464306076886-da185f6a6aab?q=80&w=800">
+<h3>Mini Strawberry Cakes</h3>
+<strong>$6</strong>
+<button onclick="addToCart('Mini Strawberry Cakes', 6)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=800">
+<h3>French Macarons</h3>
+<strong>$5</strong>
+<button onclick="addToCart('French Macarons', 5)">Add to Cart</button>
+</div>
+
+<div class="menu-item">
+<img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=800">
+<h3>Butter Scones</h3>
+<strong>$5</strong>
+<button onclick="addToCart('Butter Scones', 5)">Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="container" id="experience">
+<h2 class="section-title">The Tea Party Experience</h2>
+<p style="text-align:center; max-width:700px; margin:auto;">
+Luxury tea, aesthetic vibes, and unforgettable moments.
+</p>
+</div>
+
+<!-- CONTACT -->
+<div class="container" id="contact">
+<h2 class="section-title">Book a Tea Party</h2>
+<p style="text-align:center;">
+Email: bookings@sylsteaparty.com<br>
+Instagram: @sylsteaparty<br>
+Location: New York City
+</p>
+</div>
+
+<!-- CART -->
+<div class="container" id="cart">
+<h2 class="section-title">Your Cart</h2>
+<div id="cart-items"></div>
+<h3 id="cart-total" style="text-align:center;"></h3>
+
+<div style="text-align:center;">
+<button onclick="checkout()">Checkout</button>
+</div>
+</div>
+
+<footer>
+<p>© 2026 Syl’s Tea Party</p>
+</footer>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function updateCart(){
+let cartItems = document.getElementById("cart-items");
+let total = 0;
+
+cartItems.innerHTML = "";
+
+cart.forEach(item=>{
+let div = document.createElement("div");
+div.innerHTML = item.name + " - $" + item.price;
+cartItems.appendChild(div);
+total += item.price;
+});
+
+document.getElementById("cart-total").innerText = "Total: $" + total;
+document.getElementById("cart-count").innerText = cart.length;
+}
+
+function addToCart(name, price){
+cart.push({name, price});
+localStorage.setItem("cart", JSON.stringify(cart));
+updateCart();
+alert(name + " added to cart");
+}
+
+function checkout(){
+alert("Next step: connect Stripe here");
+}
+
+updateCart();
+
+</script>
+
+</body>
+</html>
+header h1{
+margin:0;
+font-size:38px;
+letter-spacing:1px;
+}
+
+/* NAV */
+nav{
+background:#d89aa7;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+nav a{
+padding:15px 25px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+background:#c87e8d;
+}
+
+/* HERO */
+.hero{
+background:
+linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
 url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop");
 background-size:cover;
 background-position:center;
