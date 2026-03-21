@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Menu - Syl’s Tea Party</title>
 <link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
 </head>
 
 <body>
 
 <header>
-<img src="ORIGINAL LOGO TRANSPARENT.PNG" class="logo">
+<img src="https://via.placeholder.com/200x200.png?text=LOGO" class="logo">
 <h1>Syl’s Tea Party</h1>
 </header>
 
@@ -18,23 +16,38 @@
 <a href="index.html">Home</a>
 <a href="menu.html">Menu</a>
 <a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<a href="reserve.html">Reserve</a>
+<a href="cart.html">Cart</a>
 </nav>
-
-<div class="hero" style="background-image:url('https://images.unsplash.com/photo-1512568400610-62da28bc8a13?q=80&w=1600');">
-Tea Menu
-</div>
 
 <div class="container">
 
-<h2 class="section-title">Signature Teas</h2>
+<h2>Menu</h2>
 
 <div class="menu-grid">
-<div class="menu-item"><h3>Royal Healing Tea</h3><p>$8</p></div>
-<div class="menu-item"><h3>Lavender Earl Grey</h3><p>$7</p></div>
-<div class="menu-item"><h3>Matcha Garden Latte</h3><p>$9</p></div>
-<div class="menu-item"><h3>Peach Blossom Oolong</h3><p>$8</p></div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1523906630133-f6934a1ab2b9?q=80&w=800">
+<h3>Royal Healing Tea</h3>
+<p>$8</p>
+<button onclick="addToCart('Royal Healing Tea',8)">Add to Cart</button>
 </div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1498804103079-a6351b050096?q=80&w=800">
+<h3>Lavender Earl Grey</h3>
+<p>$7</p>
+<button onclick="addToCart('Lavender Earl Grey',7)">Add to Cart</button>
+</div>
+
+</div>
+
+</div>
+
+<footer>© 2026 Syl’s Tea Party</footer>
+
+</body>
+</html></div>
 
 </div>
 
